@@ -1,0 +1,1020 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 6.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     43885,       1012]
+NotebookOptionsPosition[     38550,        931]
+NotebookOutlinePosition[     38965,        947]
+CellTagsIndexPosition[     38922,        944]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[{
+ "Till\[ADoubleDot]mpning 1: ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " m\[ODoubleDot]ter ett litet max/min problem"
+}], "Section",
+ CellChangeTimes->{{3.461308708588389*^9, 3.461308710450289*^9}, {
+  3.465990065280758*^9, 3.4659900697480087`*^9}, {3.465990885709434*^9, 
+  3.465990913621419*^9}, {3.466083404790951*^9, 3.4660834484600077`*^9}, {
+  3.4660834913615303`*^9, 3.466083516568721*^9}, {3.466096370174418*^9, 
+  3.466096371602004*^9}},ExpressionUUID->"c69546ea-9e42-4b78-a6a3-\
+3f2abf37b72b"],
+
+Cell[TextData[{
+ "I denna \[ODoubleDot]vning ska vi anv\[ADoubleDot]nda ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " f\[ODoubleDot]r att l\[ODoubleDot]sa ett max/min problem av samma typ som \
+du har st\[ODoubleDot]tt p\[ARing] i analyskursen. N\[ADoubleDot]rmare best\
+\[ADoubleDot]mt ska vi g\[ARing] igenom en del av \[ODoubleDot]vning 3.5.3 i \
+flervariabelkompendiet. \nMed flit \[ADoubleDot]r l\[ODoubleDot]sningen \
+mycket omst\[ADoubleDot]ndlig, s\[ARing] att den ska kunna appliceras ocks\
+\[ARing] p\[ARing] mer komplicerade problem, och introducera ett antal saker \
+man kan r\[ADoubleDot]kna med i ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ ".\n\nL\[ADoubleDot]s f\[ODoubleDot]rst igenom denna \"notebook\" och \
+evaluera l\[ODoubleDot]pande de celler som inneh\[ARing]ller kod(d v s \
+instruktioner till ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " att g\[ODoubleDot]ra n\[ARing]got),  s\[ARing] att du ser vad ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " ger f\[ODoubleDot]r l\[ODoubleDot]sningar. \nD\[ADoubleDot]refter kan du \
+\[ODoubleDot]ppna motsvarande \[ODoubleDot]vning i WebWork och \
+l\[ODoubleDot]sa det f\[ODoubleDot]rsta av de tv\[ARing] problem som finns d\
+\[ADoubleDot]r p\[ARing] samma s\[ADoubleDot]tt. \nDu kan g\[ADoubleDot]rna \
+kopiera denna notebook, modifiera definitionerna s\[ARing] att de passar \
+WebWorkproblemet och r\[ADoubleDot]kna.\n\nDet andra problemet i \
+WebWorksamlingen g\[ARing]r inte som det f\[ODoubleDot]rsta att \
+l\[ODoubleDot]sa direkt genom att bara modifiera denna text, utan kr\
+\[ADoubleDot]ver att du letar i hj\[ADoubleDot]lpfunktionen \"Documentation \
+Center\" i menyraden p\[ARing] ",
+ StyleBox["Mathematica ",
+  FontSlant->"Italic"],
+ "efter l\[ADoubleDot]mpliga kommandon \noch kanske exempel---men sj\
+\[ADoubleDot]lva problemet \[ADoubleDot]r inte sv\[ARing]rare. "
+}], "Text",
+ CellChangeTimes->{{3.463910676449836*^9, 3.463910909087821*^9}, {
+   3.463911023294652*^9, 3.463911227642557*^9}, {3.463911261454595*^9, 
+   3.463911348701333*^9}, {3.46599010112637*^9, 3.46599018514462*^9}, 
+   3.465990215647889*^9, {3.465990871246819*^9, 3.465990877683317*^9}, {
+   3.465990928605424*^9, 3.465990995824539*^9}, {3.465991051649437*^9, 
+   3.465991748194561*^9}, {3.465991976992038*^9, 3.465991980051792*^9}, {
+   3.466070785892746*^9, 3.46607079816173*^9}, {3.466070828429454*^9, 
+   3.4660708462683907`*^9}, {3.4660711075825663`*^9, 3.466071182896906*^9}, {
+   3.466074473116292*^9, 3.466074473540427*^9}, {3.466080531795857*^9, 
+   3.466080539590397*^9}, {3.46608058411976*^9, 3.466080613649056*^9}, {
+   3.4660806952925*^9, 3.4660806981563168`*^9}, {3.46608353422976*^9, 
+   3.466083628692265*^9}},ExpressionUUID->"2dcc87e4-23cb-4b0f-bb3b-\
+4f24f9d284d4"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[" 1. Problemet", "Section",
+ CellChangeTimes->{{3.461071076510515*^9, 3.461071101527173*^9}, {
+  3.46107123408711*^9, 3.461071235372316*^9}, {3.461071328623526*^9, 
+  3.461071338136867*^9}, {3.461303471497027*^9, 3.46130348475043*^9}, {
+  3.466069560955586*^9, 3.466069572712564*^9}, {3.4660721590660067`*^9, 
+  3.4660721638496113`*^9}},ExpressionUUID->"351b4c2d-919f-4532-bd86-\
+f8d5245c7402"],
+
+Cell["\<\
+Vi har en funktion 
+                     f(x)=x^2+y^2-3ln(x+y+2)
+p\[ARing] ett omr\[ARing]det 
+                     D= { (x,y): x^2+y^2\[LessEqual]1/8}. 
+                     
+Vi vill hitta b\[ARing]de globala och lokala maxima, samt ocks\[ARing] st\
+\[ODoubleDot]rsta v\[ADoubleDot]rdet p\[ARing] randen. Vi struntar i minima, \
+f\[ODoubleDot]r att spara plats.\
+\>", "Text",
+ CellChangeTimes->{{3.461303651344381*^9, 3.461303801769148*^9}, {
+   3.461303855107364*^9, 3.461303880927158*^9}, {3.461304111810846*^9, 
+   3.46130415965421*^9}, {3.461304215647564*^9, 3.461304257819356*^9}, {
+   3.463910956834246*^9, 3.463910958601332*^9}, {3.463916138435158*^9, 
+   3.463916156449832*^9}, {3.466069586165771*^9, 3.466069733330271*^9}, {
+   3.466069766958684*^9, 3.466069843438252*^9}, {3.466069873735334*^9, 
+   3.466069889943966*^9}, {3.466070852423847*^9, 3.466071067006427*^9}, {
+   3.4660712469361677`*^9, 3.4660713213253593`*^9}, {3.466071404208519*^9, 
+   3.466071423577015*^9}, {3.466071541474656*^9, 3.466071620472097*^9}, 
+   3.466072075496435*^9, {3.46607448967724*^9, 3.4660745341098423`*^9}, 
+   3.4660806884199142`*^9, {3.4660837314554873`*^9, 
+   3.466083757884615*^9}},ExpressionUUID->"d8df7141-73c8-4ad2-b14e-\
+bd18e180b893"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["2. Definiera funktionen", "Section",
+ CellChangeTimes->{{3.466072079304283*^9, 3.4660721144171257`*^9}, {
+   3.4660721693564787`*^9, 3.4660721817559767`*^9}, 
+   3.573474263993668*^9},ExpressionUUID->"01379e1c-cf31-4d9d-8638-\
+8af4b079969d"],
+
+Cell[TextData[{
+ "Vi b\[ODoubleDot]rjar med att definiera f(x) s\[ARing] att ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " f\[ODoubleDot]rst\[ARing]r oss n\[ADoubleDot]r vi kallar den f(x). ",
+ StyleBox["(Vi b\[ODoubleDot]rjar med att rensa de uttryck vi ska anv\
+\[ADoubleDot]nda fr\[ARing]n tidigare betydelser med Clear.)",
+  FontSlant->"Italic"]
+}], "Text",
+ CellChangeTimes->{{3.461303651344381*^9, 3.461303801769148*^9}, {
+   3.461303855107364*^9, 3.461303880927158*^9}, {3.461304111810846*^9, 
+   3.46130415965421*^9}, {3.461304215647564*^9, 3.461304257819356*^9}, {
+   3.463910956834246*^9, 3.463910958601332*^9}, {3.463916138435158*^9, 
+   3.463916156449832*^9}, {3.466069586165771*^9, 3.466069733330271*^9}, {
+   3.466069766958684*^9, 3.466069843438252*^9}, {3.466069873735334*^9, 
+   3.466069889943966*^9}, {3.466070852423847*^9, 3.466071067006427*^9}, {
+   3.4660712469361677`*^9, 3.4660713213253593`*^9}, {3.466071404208519*^9, 
+   3.466071423577015*^9}, {3.466071541474656*^9, 3.466071620472097*^9}, 
+   3.466072075496435*^9, {3.466072175786592*^9, 3.4660721763622913`*^9}, {
+   3.4660806435221453`*^9, 3.466080672154842*^9}, {3.4660836418731613`*^9, 
+   3.466083644108581*^9}},ExpressionUUID->"80fbe85e-7d91-4318-a5d1-\
+97a02fe79d13"],
+
+Cell[BoxData[{
+ RowBox[{"Clear", "[", 
+  RowBox[{"x", ",", "y", ",", "f", ",", "g", ",", "t", ",", "R"}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"f", "[", 
+   RowBox[{"x_", ",", "y_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"x", "^", "2"}], "+", 
+   RowBox[{"y", "^", "2"}], "-", 
+   RowBox[{"3", "*", 
+    RowBox[{"Log", "[", 
+     RowBox[{"x", "+", "y", "+", "2"}], "]"}]}]}]}]}], "Input",
+ CellChangeTimes->{{3.461303413198085*^9, 3.461303438628725*^9}, {
+   3.466069897554532*^9, 3.466069903778475*^9}, {3.466071202250437*^9, 
+   3.466071239068853*^9}, {3.466071399218403*^9, 3.46607140034938*^9}, {
+   3.466074549096827*^9, 3.46607456318592*^9}, {3.466076782877563*^9, 
+   3.466076783738434*^9}, {3.4660806236633577`*^9, 3.466080639588552*^9}, 
+   3.466080674956786*^9, 
+   3.573474337742626*^9},ExpressionUUID->"1d2ee1ef-79f2-48ca-932e-\
+b865190a5e2a"],
+
+Cell[TextData[{
+ StyleBox["(Notera den precisa formen av funktionsdefinitionen noga.\n\
+Strecket efter x och y  i  f[x_,y_] talar om f\[ODoubleDot]r Mathematica att \
+vi anv\[ADoubleDot]nder x och y  som variabler.\n  De anv\[ADoubleDot]nds \
+bara i definitionen. N\[ADoubleDot]r vi sedan h\[ADoubleDot]nvisar till \
+funktionen s\[ARing] skriver vi bara f[x,y]. )",
+  FontSlant->"Italic",
+  FontColor->GrayLevel[0]],
+ "\n  \n  Nu f\[ODoubleDot]rst\[ARing]r i alla fall ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " oss n\[ADoubleDot]r vi skriver f[x,y] eller f[1,1] och r\[ADoubleDot]knar \
+ut v\[ADoubleDot]rdet(kom ih\[ARing]g att man anv\[ADoubleDot]nder N f\
+\[ODoubleDot]r att f\[ARing] ett numeriskt v\[ADoubleDot]rde):"
+}], "Text",
+ CellChangeTimes->{{3.461303907496267*^9, 3.461303956560212*^9}, {
+  3.46130405391575*^9, 3.461304088409807*^9}, {3.461325255933305*^9, 
+  3.461325262324005*^9}, {3.466071341942499*^9, 3.466071386671485*^9}, {
+  3.466071460076458*^9, 3.466071466945978*^9}, {3.46607162413561*^9, 
+  3.466071659470748*^9}, {3.4660716908983088`*^9, 3.4660716970000067`*^9}, {
+  3.466074643335526*^9, 3.466074662437705*^9}, {3.466080715925563*^9, 
+  3.466080764013998*^9}},ExpressionUUID->"49ca0479-d58d-46c7-b5e9-\
+d1ed8834a351"],
+
+Cell[BoxData[{
+ RowBox[{"f", "[", 
+  RowBox[{"x", ",", "y"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"f", "[", 
+  RowBox[{"1", ",", "1"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"f", "[", 
+   RowBox[{"1", ",", "1"}], "]"}], "//", "N"}]}], "Input",
+ CellChangeTimes->{{3.461304091596835*^9, 3.461304092832186*^9}, {
+  3.466071390791937*^9, 3.466071393240388*^9}, {3.4660714367490053`*^9, 
+  3.466071437098008*^9}, {3.466071668376326*^9, 3.4660716724449472`*^9}, {
+  3.46607460410695*^9, 
+  3.466074611576764*^9}},ExpressionUUID->"9a7d3e28-3b1a-4fb4-8843-\
+ee38940bbab3"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["3. Rita upp omr\[ARing]det", "Section",
+ CellChangeTimes->{{3.4660721899680023`*^9, 3.4660722180941687`*^9}, 
+   3.466074668398929*^9, 
+   3.573474274736807*^9},ExpressionUUID->"c4587722-371b-485e-87f5-\
+80c3ff9791a9"],
+
+Cell[TextData[{
+ "Efter att ha letat i hj\[ADoubleDot]lpfunktionen kring grafritning eller p\
+\[ARing] engelska \"Plot\", \n ser man att f\[ODoubleDot]ljande kommando ger \
+en bild av D.\n \n",
+ StyleBox["(I uttrycket {x, -2, 2} i kommandot anges att x ska variera mellan \
+ -2 och 2. \nAnger vi dessa f\[ODoubleDot]r stora ser vi inte D alls i det \
+stora omr\[ARing]de som ritas.)",
+  FontSlant->"Italic"]
+}], "Text",
+ CellChangeTimes->{{3.461305466828265*^9, 3.461305590501327*^9}, {
+   3.461305879667894*^9, 3.461305964870204*^9}, {3.4660715354427*^9, 
+   3.4660715386104383`*^9}, {3.466071723632547*^9, 3.4660717476972313`*^9}, {
+   3.466071927853447*^9, 3.466072000532136*^9}, {3.466072224643944*^9, 
+   3.46607226880482*^9}, {3.466074380755445*^9, 3.466074392889303*^9}, {
+   3.466074754835271*^9, 3.4660748193066072`*^9}, {3.466080806106461*^9, 
+   3.46608081577706*^9}, {3.466080893668531*^9, 3.466080915618948*^9}, 
+   3.466081059265999*^9},ExpressionUUID->"04b00ab6-14de-4c1a-b7f9-\
+85976f3e3131"],
+
+Cell[BoxData[
+ RowBox[{"RegionPlot", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"x", "^", "2"}], "+", 
+      RowBox[{"y", "^", "2"}]}], "\[LessEqual]", 
+     RowBox[{"1", "/", "8"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", 
+     RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"y", ",", 
+     RowBox[{"-", "1"}], ",", "1"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.461305891950427*^9, 3.461305910086539*^9}, {
+  3.466071753988907*^9, 3.466071766395298*^9}, {3.466072289364428*^9, 
+  3.46607239370681*^9}, {3.466074678184217*^9, 3.466074741148782*^9}, {
+  3.466075212657723*^9, 
+  3.466075223185369*^9}},ExpressionUUID->"38776b42-00b0-4132-8932-\
+f6ab2ca411e6"],
+
+Cell[TextData[{
+ "Vi beh\[ODoubleDot]ver sedan  parametrisera funktionen p\[ARing] randen, \n\
+som \[ADoubleDot]r en cirkel kring origo med radie R=1/",
+ Cell[BoxData[
+  FormBox[
+   SqrtBox["8"], TraditionalForm]],ExpressionUUID->
+  "772813d7-4bd9-4104-a0bb-5f6fb6793f91"],
+ " och vi kan allts\[ARing] beskriva dess punkter som\n         \
+(x,y)=(Rcost,Rsint), 0\[LessEqual]t\[LessEqual]2\[Pi].\n         \nF\
+\[ODoubleDot]r ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ StyleBox["  ",
+  FontSlant->"Italic"],
+ "g\[ODoubleDot]r vi det s\[ARing] h\[ADoubleDot]r:  f\[ODoubleDot]rst ett \
+namn till cirkelns radie R,\n och sedan kallar vi f(x,y)  p\[ARing] randen \
+g(t). \n",
+ StyleBox["(Observera strecket efter t igen.)",
+  FontSlant->"Italic"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.461306002168823*^9, 3.461306003406982*^9}, {
+  3.461306051410981*^9, 3.461306081950652*^9}, {3.461306118978656*^9, 
+  3.461306121712061*^9}, {3.461307235262434*^9, 3.461307287075589*^9}, {
+  3.461307326779089*^9, 3.461307365101203*^9}, {3.46391618616409*^9, 
+  3.46391618656326*^9}, {3.466074405282193*^9, 3.4660744283619213`*^9}, {
+  3.466074837810775*^9, 3.466074911542045*^9}, {3.466074958623672*^9, 
+  3.466075089747259*^9}, {3.466080936038343*^9, 3.466081068330391*^9}, {
+  3.4660812299197598`*^9, 3.466081275046873*^9}, {3.4660813158741837`*^9, 
+  3.466081381748559*^9}},ExpressionUUID->"6ae1d8c0-632c-4856-8bdc-\
+c3249a95a2c2"],
+
+Cell[BoxData[{
+ RowBox[{"R", "=", 
+  RowBox[{"1", "/", 
+   RowBox[{"Sqrt", "[", "8", "]"}]}]}], "\n", 
+ RowBox[{
+  RowBox[{"g", "[", "t_", "]"}], ":=", 
+  RowBox[{"f", "[", 
+   RowBox[{
+    RowBox[{"R", "*", 
+     RowBox[{"Cos", "[", "t", "]"}]}], ",", 
+    RowBox[{"R", "*", 
+     RowBox[{"Sin", "[", "t", "]"}]}]}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.461306098981277*^9, 3.461306110161187*^9}, {
+  3.466074917250717*^9, 3.46607492883871*^9}, {3.466075243860798*^9, 
+  3.466075270603333*^9}, {3.466075349722213*^9, 
+  3.466075353613698*^9}},ExpressionUUID->"6c8c8d8d-76d2-4034-85e7-\
+f22820d2bc8e"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["4.Ber\[ADoubleDot]kning av maxima", "Section"]], \
+"Section",
+ CellChangeTimes->{{3.461304941086027*^9, 3.461305004887781*^9}, {
+  3.461305085544336*^9, 3.46130508554493*^9}, {3.461305127755568*^9, 
+  3.46130529599858*^9}, {3.461305988381296*^9, 3.461305988890686*^9}, {
+  3.4639158866518593`*^9, 3.4639159268887873`*^9}, {3.4639162326344557`*^9, 
+  3.4639162456312*^9}, {3.4660753839169683`*^9, 
+  3.4660754159019833`*^9}},ExpressionUUID->"10353ce3-babb-416a-b24d-\
+aba3898b3790"],
+
+Cell[TextData[{
+ "Nu kan vi b\[ODoubleDot]rja r\[ADoubleDot]kna. \nDet finns olika kommandon \
+f\[ODoubleDot]r att ber\[ADoubleDot]kna maximum. Ett som bara heter Maximize, \
+och tv\[ARing] som g\[ODoubleDot]r det hela numeriskt, NMaximize och \
+FindMaximum. F\[ODoubleDot]r det sista beh\[ODoubleDot]ver man specificera \
+ett n\[ADoubleDot]rmev\[ADoubleDot]rde och sedan letar programmet efter ett \
+lokalt maximum intill detta.\n ",
+ StyleBox["(I uttrycket nedan har vi talat om i f\[ODoubleDot]rsta biten \
+{f[x, y], x^2 + y^2 \[LessEqual] R} att vi vill maximera f under bivillkoret \
+att vi befinner oss i cirkelskivan x^2 + y^2 \[LessEqual] R=1/",
+  FontSlant->"Italic"],
+ Cell[BoxData[
+  FormBox["8.", TraditionalForm]],
+  FontSlant->"Italic",ExpressionUUID->
+  "314e7013-643b-4f41-89dc-8d3e262f778f"],
+ " ",
+ StyleBox["Sist i uttrycket talar vi om att x och y \[ADoubleDot]r variabler \
+som ska varieras, och inte parametrar med fixa men ok\[ADoubleDot]nda v\
+\[ADoubleDot]rden.)",
+  FontSlant->"Italic"]
+}], "Text",
+ CellChangeTimes->{{3.461305712268147*^9, 3.461305749412645*^9}, {
+  3.46607542830264*^9, 3.4660755954515543`*^9}, {3.4660756999270763`*^9, 
+  3.466075859548221*^9}, {3.4660810813372*^9, 
+  3.46608121296459*^9}},ExpressionUUID->"9cbf9d18-e326-42a8-aaca-\
+694110f836fa"],
+
+Cell[BoxData[
+ RowBox[{"Maximize", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"f", "[", 
+      RowBox[{"x", ",", "y"}], "]"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"x", "^", "2"}], "+", 
+       RowBox[{"y", "^", "2"}]}], "\[LessEqual]", 
+      RowBox[{"1", "/", "8"}]}]}], "}"}], ",", " ", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", "y"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.461305759239375*^9, 3.461305764105293*^9}, {
+  3.466075600819036*^9, 3.466075637342215*^9}, {3.4660756860599213`*^9, 
+  3.4660756961925793`*^9}, {3.466076207507846*^9, 
+  3.466076209288731*^9}},ExpressionUUID->"199ebbb0-53c3-4540-b487-\
+29f26faf0daa"],
+
+Cell["\<\
+Matematica returnerar samma uttryck och det betyder att den kan inte \
+f\[ARing] fram ett exakt uttryck. D\[ARing] finns det extra trick vi kan ta \
+till---n\[ADoubleDot]mligen NMaximize, men l\[ARing]t oss f\[ODoubleDot]rs\
+\[ODoubleDot]ka f\[ODoubleDot]rst p\[ARing] randen ist\[ADoubleDot]llet.\
+\>", "Text",
+ CellChangeTimes->{{3.461305773928414*^9, 3.461305793176127*^9}, {
+  3.461305825197482*^9, 3.461305825198085*^9}, {3.466075898823141*^9, 
+  3.466075950318256*^9}, {3.466080386410316*^9, 3.466080420387134*^9}, {
+  3.4660814139179583`*^9, 
+  3.4660814163153753`*^9}},ExpressionUUID->"39180c0e-d6c5-4301-bdd1-\
+7e2021477d50"],
+
+Cell[BoxData[
+ RowBox[{"randMax", "=", 
+  RowBox[{"Maximize", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"g", "[", "t", "]"}], ",", 
+      RowBox[{"0", "\[LessEqual]", "t", "\[LessEqual]", 
+       RowBox[{"2", " ", "Pi"}]}]}], "}"}], ",", " ", "t"}], "]"}]}]], "Input",\
+
+ CellChangeTimes->{{3.461305836150255*^9, 3.461305839989638*^9}, {
+   3.466075962093094*^9, 3.466076000225296*^9}, {3.466076046889103*^9, 
+   3.466076075684175*^9}, {3.466076918198896*^9, 3.4660769188861847`*^9}, 
+   3.4660769996797028`*^9, {3.573474449084361*^9, 
+   3.5734744636359*^9}},ExpressionUUID->"bc1ff76e-5654-4c24-a83b-\
+d9152e0c5b87"],
+
+Cell["\<\
+H\[ADoubleDot]r fick vi ett exakt svar, och fr\[ARing]n detta kan vi \
+f\[ARing] numeriska v\[ADoubleDot]rden.\
+\>", "Text",
+ CellChangeTimes->{{3.461304408690483*^9, 3.461304420270637*^9}, {
+  3.461304503237579*^9, 3.461304575303441*^9}, {3.461304715856278*^9, 
+  3.461304760425232*^9}, {3.461304798977022*^9, 3.461304918514487*^9}, {
+  3.461305311911057*^9, 3.461305328119968*^9}, {3.461308350983206*^9, 
+  3.461308396944946*^9}, {3.461320910228664*^9, 3.461320910690667*^9}, {
+  3.463916284874962*^9, 3.463916291624716*^9}, {3.46391634464233*^9, 
+  3.463916385890562*^9}, {3.4660761232304373`*^9, 3.4660761449564953`*^9}, {
+  3.466076834724907*^9, 
+  3.466076887339508*^9}},ExpressionUUID->"bf876eb3-653a-4d90-9c5c-\
+337614ba6948"],
+
+Cell[BoxData[
+ RowBox[{"randMax", "//", "N"}]], "Input",
+ CellChangeTimes->{{3.4660770153862553`*^9, 3.466077034765101*^9}, {
+  3.4660771654057283`*^9, 3.466077169514617*^9}, {3.573474467458556*^9, 
+  3.573474469194339*^9}},ExpressionUUID->"71375336-c596-4dff-9da8-\
+2a2fad189e57"],
+
+Cell["\<\
+L\[ARing]t oss verifiera att detta verkar ett rimligt resultat genom att \
+plotta g[t]:\
+\>", "Text",
+ CellChangeTimes->{{3.466077090547525*^9, 3.466077181138011*^9}, {
+  3.46607721583031*^9, 
+  3.466077218163423*^9}},ExpressionUUID->"d2f74f3b-5cf6-4693-8048-\
+698e3f766fb7"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Plot", "[", 
+   RowBox[{
+    RowBox[{"g", "[", "t", "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"t", ",", "0", ",", 
+      RowBox[{"2", " ", "Pi"}]}], "}"}]}], "]"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.466077159918166*^9, 3.466077200676099*^9}, {
+  3.573474977679947*^9, 
+  3.573474985375503*^9}},ExpressionUUID->"5df7de78-98a0-4e31-b9f0-\
+f9410c06440b"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+
+5. Station\[ADoubleDot]ra punkter\
+\>", "Section",
+ CellChangeTimes->{{3.466080340734253*^9, 3.466080371504857*^9}, {
+  3.466082052487692*^9, 
+  3.466082053296859*^9}},ExpressionUUID->"ed5669c0-3adf-4626-ad27-\
+924dca712e38"],
+
+Cell["\<\
+Vi s\[ARing]g allts\[ARing] att g[t] grafiskt verkar verkligen ha ett globalt \
+maximum ungef\[ADoubleDot]r vid t=4, precis som Maximize sade. Vi har allts\
+\[ARing] troligen hittat det enda lokala och globala maximat p\[ARing] randen. 
+L\[ARing]t oss kolla genom att r\[ADoubleDot]kna ut derivatan och hitta dess \
+nollst\[ADoubleDot]llen. 
+Vi vet ju att en deriverbar funktion har lokala maximum bara i punkter d\
+\[ADoubleDot]r derivatan \[ADoubleDot]r 0 eller i intervallets \
+\[ADoubleDot]ndpunkter(men de sista beh\[ODoubleDot]ver vi inte bekymra oss \
+om h\[ADoubleDot]r--varf\[ODoubleDot]r d\[ARing]?):\
+\>", "Text",
+ CellChangeTimes->{{3.46607723733169*^9, 3.466077335775097*^9}, {
+  3.4660776120873423`*^9, 3.466077678441805*^9}, {3.466078785068692*^9, 
+  3.466078854030691*^9}, {3.466080431095191*^9, 3.466080465244928*^9}, {
+  3.4660814528953543`*^9, 
+  3.46608151067857*^9}},ExpressionUUID->"0c8772cd-3688-4822-a4c3-\
+92356f118f77"],
+
+Cell[BoxData[
+ RowBox[{"Solve", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"D", "[", 
+     RowBox[{
+      RowBox[{"g", "[", "t", "]"}], ",", "t"}], "]"}], "\[Equal]", "0"}], ",",
+    " ", "t"}], "]"}]], "Input",
+ CellChangeTimes->{{3.466077680554014*^9, 3.46607773049232*^9}, {
+   3.466077773608601*^9, 3.466077778581752*^9}, {3.466077870229129*^9, 
+   3.466077889354088*^9}, {3.4660779540634527`*^9, 3.4660779567645483`*^9}, 
+   3.573474533074085*^9, {3.573475014007113*^9, 3.573475029247357*^9}, {
+   3.573475188086344*^9, 
+   3.573475191716752*^9}},ExpressionUUID->"0f75d7a1-ba22-41c6-a7a1-\
+46dd60112c48"],
+
+Cell["\<\
+Detta verkar inte st\[ADoubleDot]mmer inte med v\[ARing]rt resultat nyss, \
+grafen har ju ett otvetydigt lokalt maximum, som allts\[ARing] \[ADoubleDot]r \
+en station\[ADoubleDot]r punkt d\[ARing]r derivatan ska vara 0. Om man tittar \
+efter i dokumentationen vad ConditionalExpression betyder s\[ARing] ser man \
+att svaret vi f\[ARing]tt betyder att ekvationen har o\[ADoubleDot]ndligt m\
+\[ARing]nga l\[ODoubleDot]sningar. Vi \[ADoubleDot]r dock endast intresserade \
+av de som ligger i intervallet [0,2\[Pi]]. 
+
+Med lite eftertanke inser vi att detta vet vi ju eftersom g[t+2\[Pi]]=g[t], \
+och om vi tittar p\[ARing] de tv\[ARing] l\[ODoubleDot]sningarna ovan, ser vi \
+att den f\[ODoubleDot]rsta med C[1]= 1 \[ADoubleDot]r precis samma punkt \
+t=3.92699,  d\[ADoubleDot]r det maximum vi nyss hittade antogs.\
+\>", "Text",
+ CellChangeTimes->{
+  3.4660779862281113`*^9, {3.466078049792943*^9, 3.466078170855709*^9}, {
+   3.466078215523885*^9, 3.4660784018392973`*^9}, {3.466078868895762*^9, 
+   3.4660788692637167`*^9}, {3.466081555850548*^9, 3.466081756390602*^9}, {
+   3.466081819819005*^9, 3.466081898973446*^9}, {3.573474644774181*^9, 
+   3.573474664174161*^9}, {3.573474812220831*^9, 3.573474848700095*^9}, {
+   3.573475203040807*^9, 
+   3.573475340431589*^9}},ExpressionUUID->"30d88095-dbe1-4f71-8330-\
+df26ceff3ee0"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"-", "3"}], " ", 
+    RowBox[{"Pi", "/", "4"}]}], "+", 
+   RowBox[{"2", " ", "Pi"}]}], " ", "//", " ", "N"}]], "Input",
+ CellChangeTimes->{{3.466077980820716*^9, 3.466077980999385*^9}, {
+  3.466078182232768*^9, 3.466078203338135*^9}, {3.573475109300225*^9, 
+  3.573475130334832*^9}, {3.57347536657902*^9, 
+  3.573475367874375*^9}},ExpressionUUID->"03ef6b05-377e-4bf4-b0f0-\
+f0d2f1b3c9ba"],
+
+Cell["\<\
+Vi kan (nog) allts\[ARing] anse att vi l\[ODoubleDot]st ett av de \
+ursprungliga problemen: P\[ARing] randen finns det ett enda lokalt maximum, \
+som samtidigt \[ADoubleDot]r globalt maximum. Det \[ADoubleDot]r  -1.0914 och \
+det antas n\[ADoubleDot]r {t \[Rule] 3.92699}}, d v s i punkten med \
+xy-koordinater givna av \
+\>", "Text",
+ CellChangeTimes->{{3.466078406654698*^9, 3.466078424071743*^9}, {
+  3.466078458434635*^9, 3.466078465171008*^9}, {3.466078570863749*^9, 
+  3.466078578741398*^9}, {3.466078720043723*^9, 3.4660787639081717`*^9}, {
+  3.466081907766868*^9, 3.4660819099657803`*^9}, {3.573475401870861*^9, 
+  3.573475411510986*^9}},ExpressionUUID->"8baa547f-ec7d-4713-9385-\
+ca3c83d87e71"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"R", " ", 
+     RowBox[{"Cos", "[", "t", "]"}]}], ",", 
+    RowBox[{"R", " ", 
+     RowBox[{"Sin", "[", "t", "]"}]}]}], "}"}], "/.", 
+  RowBox[{"t", "->", "3.92699"}]}]], "Input",
+ CellChangeTimes->{{3.4660784287964277`*^9, 3.466078561086578*^9}, 
+   3.573475428746718*^9},ExpressionUUID->"403f0c39-e588-438e-81a9-\
+615dc03122c8"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["6. Numerisk maximering", "Section",
+ CellChangeTimes->{{3.466081938081582*^9, 3.4660819602603397`*^9}, 
+   3.4660838000139093`*^9, 3.573475443542384*^9, 
+   3.573475498253778*^9},ExpressionUUID->"e521ee2b-1cd7-46f6-b9a7-\
+61f074b21d1e"],
+
+Cell["\<\
+L\[ARing]t oss nu f\[ODoubleDot]rs\[ODoubleDot]ka med NMaximize p\[ARing] den \
+ursprungliga funktionen av 2 variabler\
+\>", "Text",
+ CellChangeTimes->{{3.4660785918669233`*^9, 
+  3.4660786408795757`*^9}},ExpressionUUID->"73d03a32-146a-4701-aa86-\
+a8454158d12c"],
+
+Cell[BoxData[{
+ RowBox[{"NMaximize", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"f", "[", 
+      RowBox[{"x", ",", "y"}], "]"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"x", "^", "2"}], "+", 
+       RowBox[{"y", "^", "2"}]}], "\[LessEqual]", 
+      RowBox[{"1", "/", "8"}]}]}], "}"}], ",", " ", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", "y"}], "}"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"NMaximize", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"g", "[", "t", "]"}], ",", 
+     RowBox[{"0", "\[LessEqual]", "t", "\[LessEqual]", 
+      RowBox[{"2", " ", "Pi"}]}]}], "}"}], ",", " ", "t"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.4613063193413*^9, 3.461306321482106*^9}, {
+  3.46607615810786*^9, 3.4660761611456757`*^9}, {3.466076274318489*^9, 
+  3.4660762811189423`*^9}, {3.466079633330024*^9, 
+  3.4660796356390333`*^9}},ExpressionUUID->"e285ebf3-7f6f-485f-a6c4-\
+f056ec6cc43e"],
+
+Cell[TextData[{
+ "F\[ODoubleDot]r g f\[ARing]r vi samma punkt som vi hittade nyss och denna g\
+\[ARing]ng f\[ARing]r vi ocks\[ARing] ett globalt maximum f\[ODoubleDot]r f. \
+Men det \[ADoubleDot]r samma v\[ADoubleDot]rde och samma punkt p\[ARing] \
+randen av D! Allts\[ARing] p\[ARing]st\[ARing]r ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " att det st\[ODoubleDot]rsta v\[ADoubleDot]rdet antas p\[ARing] randen av \
+cirkelskivan. \n"
+}], "Text",
+ CellChangeTimes->{{3.466078647915369*^9, 3.4660786860570717`*^9}, {
+  3.466078876150977*^9, 3.466078916456218*^9}, {3.466079047892098*^9, 
+  3.466079120483962*^9}, {3.4660796764025106`*^9, 3.466079731666155*^9}, {
+  3.466079836890191*^9, 3.4660798435444517`*^9}, {3.466081981650783*^9, 
+  3.4660819939529257`*^9}, {3.466082919040628*^9, 3.466082935927544*^9}, {
+  3.4661343420101624`*^9, 
+  3.4661343545241747`*^9}},ExpressionUUID->"6b99b93c-2f09-4f5c-a544-\
+a4d65ade7c92"],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Behovet av att kontrollera Mathematicas r\[ADoubleDot]kningar-- - ett enkelt \
+exempel d\[ADoubleDot]r svaret blir fel\
+\>", "Subsubsection",
+ CellChangeTimes->{{3.4661343570812273`*^9, 3.4661344247168417`*^9}, {
+  3.466134455078704*^9, 3.466134468629962*^9}, {3.573475473614148*^9, 
+  3.573475495613905*^9}, {3.57347564737223*^9, 
+  3.573475648044232*^9}},ExpressionUUID->"8be705bf-6797-4101-aba9-\
+0c3e15abddff"],
+
+Cell["\<\
+Vi ska maximera Exp((x-0.5)y)-Cosx p\[ARing] cirkelskivan kring origo med \
+radie 1:\
+\>", "Text",
+ CellChangeTimes->{
+  3.466134510551004*^9, {3.466134542936466*^9, 3.466134628587193*^9}, 
+   3.573475477110074*^9},ExpressionUUID->"e9d832dd-fffc-4af6-9bbb-\
+302a65f396b0"],
+
+Cell[BoxData[
+ RowBox[{"NMaximize", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", 
+       RowBox[{"Cos", "[", "x", "]"}]}], "+", 
+      RowBox[{"Exp", "[", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"x", "-", "0.5"}], ")"}], " ", "y"}], "]"}]}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"x", "^", "2"}], "+", 
+       RowBox[{"y", "^", "2"}]}], "<", "1"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", "y"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.466134427632264*^9, 3.466134446833192*^9}, 
+   3.4661344880095167`*^9, 3.466134529483095*^9, {3.573475506875517*^9, 
+   3.573475508538849*^9}},ExpressionUUID->"e6e84d42-8b09-4b41-9fe4-\
+f40e4fd6564d"],
+
+Cell["\<\
+Sedan kommer vi p\[ARing] att vi bara \[ADoubleDot]r intresserade av v\
+\[ADoubleDot]rden med negativa x-koordinater:\
+\>", "Text",
+ CellChangeTimes->{{3.466134638955543*^9, 3.466134678188888*^9}, {
+   3.466134848445805*^9, 3.4661348501867723`*^9}, 
+   3.573475514093841*^9},ExpressionUUID->"55f41ffa-5404-4719-bd2d-\
+0c1e6a4d993e"],
+
+Cell[BoxData[{
+ RowBox[{"NMaximize", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", 
+       RowBox[{"Cos", "[", "x", "]"}]}], "+", 
+      RowBox[{"Exp", "[", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"x", "-", "0.5"}], ")"}], " ", "y"}], "]"}]}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"x", "^", "2"}], "+", 
+       RowBox[{"y", "^", "2"}]}], "<", "1"}], ",", 
+     RowBox[{"x", "<", "0"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", "y"}], "}"}]}], "]"}], "\n", 
+ RowBox[{"{", 
+  RowBox[{"1.600463170863036`", ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"x", "\[Rule]", 
+      RowBox[{"-", "0.6572188362846351`"}]}], ",", 
+     RowBox[{"y", "\[Rule]", 
+      RowBox[{"-", "0.7536998714321307`"}]}]}], "}"}]}], "}"}]}], "Input",
+ CellChangeTimes->{{3.466134427632264*^9, 3.466134446833192*^9}, {
+  3.4661344880095167`*^9, 
+  3.466134496121471*^9}},ExpressionUUID->"aa39d552-3093-4d21-913f-\
+1ff2af8d6aaf"],
+
+Cell[TextData[{
+ "Men, hall\[ARing], detta v\[ADoubleDot]rde \[ADoubleDot]r ju \
+st\[ODoubleDot]rre \[ADoubleDot]n det tidigare, trots att vi maximerar \
+\[ODoubleDot]ver f\[ADoubleDot]rre v\[ADoubleDot]rden.  Kommandot NMaximize \
+har allts\[ARing] gett fel resultat. Resultatet f\[ODoubleDot]rklaras av att ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " anv\[ADoubleDot]nder sig av en algoritm som letar lokala maximum, och som \
+ibland allts\[ARing] inte hittar alla dessa. Allts\[ARing] m\[ARing]ste man \
+vara ordentligt f\[ODoubleDot]rsiktigt med NMaximize!\n\nI plotten av \
+funktionen nedan kan vi se hur de tv\[ARing] maximum som vi hittat."
+}], "Text",
+ CellChangeTimes->{{3.466134681689879*^9, 3.466134788824445*^9}, {
+   3.466134867627819*^9, 3.466134990071207*^9}, {3.466135057428637*^9, 
+   3.466135138252057*^9}, 
+   3.573475548158061*^9},ExpressionUUID->"44f4a308-330a-4283-a02e-\
+82da178801b7"],
+
+Cell[BoxData[
+ RowBox[{"Plot3D", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"-", 
+     RowBox[{"Cos", "[", "x", "]"}]}], "+", 
+    RowBox[{"Exp", "[", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"x", "-", "0.5"}], ")"}], " ", "y"}], "]"}]}], ",", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", 
+     RowBox[{"-", "2"}], ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"y", ",", 
+     RowBox[{"-", "2"}], ",", "2"}], "}"}], ",", 
+   RowBox[{"RegionFunction", "\[Rule]", 
+    RowBox[{"Function", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"x", ",", "y", ",", "z"}], "}"}], ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"x", "^", "2"}], "+", 
+        RowBox[{"y", "^", "2"}]}], "<", "1"}]}], "]"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.466134427632264*^9, 3.466134446833192*^9}, {
+   3.4661344880095167`*^9, 3.466134496121471*^9}, 3.466134803128047*^9, {
+   3.466135010640572*^9, 3.4661350460763893`*^9}, 
+   3.573475556541227*^9},ExpressionUUID->"e8bc5d2a-525a-4bf3-a937-\
+aaaa035b2075"],
+
+Cell[TextData[{
+ "Hur kan vi d\[ARing] \[ODoubleDot]ka s\[ADoubleDot]kerheten? En del av \
+detta \[ADoubleDot]r att s\[ARing] l\[ARing]ngt m\[ODoubleDot]jligt f\
+\[ODoubleDot]lja samma schema som vi anv\[ADoubleDot]nder n\[ADoubleDot]r vi \
+r\[ADoubleDot]knar f\[ODoubleDot]r hand, t ex r\[ADoubleDot]kna ut eventuella \
+station\[ADoubleDot]ra punkter.",
+ StyleBox[" \n\n(De partiella derivatorna r\[ADoubleDot]knar vi ut som D[f[x, \
+y], x], och ekvationen D[f[x, y], x]=0 skriver vi med TV\[CapitalARing] \
+likhetstecken f\[ODoubleDot]r att Mathematica ska kunna skilja det \
+fr\[ARing]n en definition.)",
+  FontSlant->"Italic"],
+ "\n"
+}], "Text",
+ CellChangeTimes->{{3.466078647915369*^9, 3.4660786860570717`*^9}, {
+  3.466078876150977*^9, 3.466078916456218*^9}, {3.466079047892098*^9, 
+  3.466079120483962*^9}, {3.4660796764025106`*^9, 3.466079731666155*^9}, {
+  3.466079836890191*^9, 3.4660798435444517`*^9}, {3.466081981650783*^9, 
+  3.4660819939529257`*^9}, {3.466082919040628*^9, 3.466082935927544*^9}, {
+  3.4661343420101624`*^9, 3.4661343545241747`*^9}, {3.466135247943665*^9, 
+  3.4661353630194597`*^9}, {3.466135529570672*^9, 3.4661355616117268`*^9}, {
+  3.573475561126107*^9, 
+  3.573475562525466*^9}},ExpressionUUID->"ee28a248-6ebb-49d2-b999-\
+24575a73b0ee"],
+
+Cell[BoxData[
+ RowBox[{"Solve", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"D", "[", 
+       RowBox[{
+        RowBox[{"f", "[", 
+         RowBox[{"x", ",", "y"}], "]"}], ",", "x"}], "]"}], "\[Equal]", "0"}],
+      ",", 
+     RowBox[{
+      RowBox[{"D", "[", 
+       RowBox[{
+        RowBox[{"f", "[", 
+         RowBox[{"x", ",", "y"}], "]"}], ",", "y"}], "]"}], "\[Equal]", 
+      "0"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", "y"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.466078924565353*^9, 3.466078994549026*^9}, 
+   3.466079026051676*^9, 
+   3.57347557339459*^9},ExpressionUUID->"1aa7be4f-60c0-4ac8-8685-\
+59f9b2de698e"],
+
+Cell[TextData[{
+ "B\[ADoubleDot]gge dessa punkter ligger utanf\[ODoubleDot]r cirkelskivan \
+x^2+y^2\[LessEqual]1/8, s\[ARing] det finns inga lokala maxima eller minima \
+inuti cirkelskivan. L\[ARing]t oss titta efter p\[ARing] grafen till f[x], \
+betraktande av vilken ocks\[ARing] ger ytterligare rimlighet till resultaten \
+av NMaximize.\n\n",
+ StyleBox["(Efter lite letande bland exemplen i documentation center hittar \
+man hur man ska g\[ODoubleDot]ra f\[ODoubleDot]r att f\[ARing] grafen \
+\[ODoubleDot]ver cirkelskivan med hj\[ADoubleDot]lp av Region \
+Function---samma som anv\[ADoubleDot]ndes ovan):",
+  FontSlant->"Italic"]
+}], "Text",
+ CellChangeTimes->{{3.466079737173538*^9, 3.466079809778157*^9}, {
+   3.466079850317724*^9, 3.466079866910327*^9}, {3.466079958572246*^9, 
+   3.466079998938583*^9}, {3.4660800328898067`*^9, 3.4660800569835978`*^9}, 
+   3.4660820135292*^9, 3.4660829156874313`*^9, {3.466135215038661*^9, 
+   3.466135221334852*^9}, {3.466135374883806*^9, 3.4661354101748457`*^9}, {
+   3.466135625586359*^9, 
+   3.4661356873837023`*^9}},ExpressionUUID->"e7b4a379-1f03-4bc5-86dd-\
+7ed93b2dad7c"],
+
+Cell[BoxData[
+ RowBox[{"Plot3D", "[", 
+  RowBox[{
+   RowBox[{"f", "[", 
+    RowBox[{"x", ",", "y"}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", 
+     RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"y", ",", 
+     RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", 
+   RowBox[{"RegionFunction", "\[Rule]", 
+    RowBox[{"Function", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"x", ",", "y", ",", "z"}], "}"}], ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"x", "^", "2"}], "+", 
+        RowBox[{"y", "^", "2"}]}], "<", 
+       RowBox[{"1", "/", "8"}]}]}], "]"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.4660791567239733`*^9, 3.466079227559113*^9}, {
+   3.466079924986721*^9, 3.466079949036277*^9}, 
+   3.573475665651199*^9},ExpressionUUID->"94554ae5-eed9-4385-af1b-\
+30cfaac0b2df"],
+
+Cell[TextData[{
+ "Fr\[ARing]n grafen verkar v\[ARing]ra resultat rimliga. \n\n",
+ StyleBox["F\[ODoubleDot]r att sammanfatta: det st\[ODoubleDot]rsta v\
+\[ADoubleDot]rdet antas(nog) i punkten (-0.25,-0.25) p\[ARing] randen av \
+cirkelskivan och \[ADoubleDot]r -1.0914. Det finns inga \
+station\[ADoubleDot]ra punkter till f i D, och allts\[ARing] inte heller n\
+\[ARing]gra ytterligare lokala maxima.", "Subsubsection"]
+}], "Text",
+ CellChangeTimes->{{3.4660800653790894`*^9, 3.466080292959235*^9}, 
+   3.466080505496476*^9, 3.466082034898376*^9, 3.466082911135701*^9, {
+   3.466135577283345*^9, 
+   3.4661355801070766`*^9}},ExpressionUUID->"9ffe8450-af8d-49d0-8258-\
+a10a6c0c444e"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["7. Slutord", "Section",
+ CellChangeTimes->{{3.466082063103986*^9, 3.466082068598872*^9}, {
+   3.466082107226265*^9, 3.466082111161413*^9}, 3.46608286574905*^9, 
+   3.46608290139006*^9},ExpressionUUID->"4d424de6-6b81-408b-90aa-\
+59fe89f91cdc"],
+
+Cell[TextData[{
+ "Kan vi d\[ARing] vara helt s\[ADoubleDot]kra p\[ARing] resultatet? Svaret \
+\[ADoubleDot]r nej... Men de \[ADoubleDot]r troliga. \n\nRedan ovan har vi \
+kollat en del.Vi kan, om vi beh\[ODoubleDot]ver,  i efterhand \
+f\[ODoubleDot]rs\[ODoubleDot]ka verifiera resultaten, (eller \
+omv\[ADoubleDot]nt anv\[ADoubleDot]nda ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " som en verifikation av v\[ARing]ra r\[ADoubleDot]kningar). \n\n T ex kan \
+vi titta p\[ARing] derivatan D[g[t]"
+}], "Text",
+ CellChangeTimes->{{3.4660821169782267`*^9, 3.466082404356347*^9}, {
+   3.4660824367249317`*^9, 3.466082474877481*^9}, {3.466082516306617*^9, 
+   3.466082519760285*^9}, {3.466082829788571*^9, 3.466082855140575*^9}, 
+   3.4660828963591423`*^9, {3.4660829921539707`*^9, 3.466083015202558*^9}, {
+   3.466083076726275*^9, 3.466083110026094*^9}, {3.466084195832205*^9, 
+   3.466084198925776*^9}, {3.466135429221946*^9, 3.466135488297329*^9}, {
+   3.466135706634533*^9, 
+   3.466135733593534*^9}},ExpressionUUID->"17d62a18-50cb-401d-b26f-\
+64b2a1ca6f3d"],
+
+Cell[BoxData[
+ RowBox[{"D", "[", 
+  RowBox[{
+   RowBox[{"g", "[", "t", "]"}], ",", "t"}], "]"}]], "Input",
+ CellChangeTimes->{{3.4660824780573072`*^9, 3.4660824867034683`*^9}, 
+   3.57347567420721*^9},ExpressionUUID->"b3b0a171-ec6d-4618-a464-\
+437d8e0bd731"],
+
+Cell[TextData[{
+ "och se att den \[ADoubleDot]r 0 precis n\[ADoubleDot]r ",
+ Cell[BoxData[
+  RowBox[{
+   FractionBox[
+    RowBox[{"Cos", "[", "t", "]"}], 
+    RowBox[{"2", " ", 
+     SqrtBox["2"]}]], "-", 
+   FractionBox[
+    RowBox[{"Sin", "[", "t", "]"}], 
+    RowBox[{"2", " ", 
+     SqrtBox["2"]}]]}]],
+  CellChangeTimes->{3.466082487895042*^9},ExpressionUUID->
+  "e6d5ac02-3b8e-4b28-9e23-40aefd09a042"],
+ "= 0,  d v s precis n\[ADoubleDot]r Cos[t]=Sin[t], d v s precis n\
+\[ADoubleDot]r  Tan[t]=1 eller n\[ADoubleDot]r \nt=ArcTan[1]+n\[Pi] f\
+\[ODoubleDot]r n ett heltal, vilket ger oss precis samma \
+l\[ODoubleDot]sningar som ",
+ StyleBox["Mathematica ",
+  FontSlant->"Italic"],
+ "f\[ODoubleDot]r de station\[ADoubleDot]ra punkterna p\[ARing] randen."
+}], "Text",
+ CellChangeTimes->{{3.466082532269926*^9, 3.466082809499799*^9}, {
+  3.4660828858274107`*^9, 3.466082890942033*^9}, {3.4661357514195623`*^9, 
+  3.466135762378028*^9}},ExpressionUUID->"452befc0-4da3-4731-a75a-\
+f43ecd65530d"]
+}, Open  ]]
+},
+WindowSize->{763, 934},
+WindowMargins->{{222, Automatic}, {1, Automatic}},
+PrivateNotebookOptions->{"VersionedStylesheet"->{"Default.nb"[8.] -> False}},
+FrontEndVersion->"12.0 for Mac OS X x86 (64-bit) (April 8, 2019)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[567, 22, 530, 11, 105, "Section",ExpressionUUID->"c69546ea-9e42-4b78-a6a3-3f2abf37b72b"],
+Cell[1100, 35, 2769, 48, 403, "Text",ExpressionUUID->"2dcc87e4-23cb-4b0f-bb3b-4f24f9d284d4"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3906, 88, 399, 6, 67, "Section",ExpressionUUID->"351b4c2d-919f-4532-bd86-f8d5245c7402"],
+Cell[4308, 96, 1249, 22, 173, "Text",ExpressionUUID->"d8df7141-73c8-4ad2-b14e-bd18e180b893"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5594, 123, 247, 4, 67, "Section",ExpressionUUID->"01379e1c-cf31-4d9d-8638-8af4b079969d"],
+Cell[5844, 129, 1258, 21, 58, "Text",ExpressionUUID->"80fbe85e-7d91-4318-a5d1-97a02fe79d13"],
+Cell[7105, 152, 871, 20, 52, "Input",ExpressionUUID->"1d2ee1ef-79f2-48ca-932e-b865190a5e2a"],
+Cell[7979, 174, 1258, 22, 150, "Text",ExpressionUUID->"49ca0479-d58d-46c7-b5e9-d1ed8834a351"],
+Cell[9240, 198, 582, 13, 73, "Input",ExpressionUUID->"9a7d3e28-3b1a-4fb4-8843-ee38940bbab3"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9859, 216, 224, 4, 67, "Section",ExpressionUUID->"c4587722-371b-485e-87f5-80c3ff9791a9"],
+Cell[10086, 222, 1008, 17, 127, "Text",ExpressionUUID->"04b00ab6-14de-4c1a-b7f9-85976f3e3131"],
+Cell[11097, 241, 740, 20, 30, "Input",ExpressionUUID->"38776b42-00b0-4132-8932-f6ab2ca411e6"],
+Cell[11840, 263, 1427, 30, 175, "Text",ExpressionUUID->"6ae1d8c0-632c-4856-8bdc-c3249a95a2c2"],
+Cell[13270, 295, 606, 16, 52, "Input",ExpressionUUID->"6c8c8d8d-76d2-4034-85e7-f22820d2bc8e"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13913, 316, 505, 8, 67, "Section",ExpressionUUID->"10353ce3-babb-416a-b24d-aba3898b3790"],
+Cell[14421, 326, 1294, 25, 173, "Text",ExpressionUUID->"9cbf9d18-e326-42a8-aaca-694110f836fa"],
+Cell[15718, 353, 666, 18, 30, "Input",ExpressionUUID->"199ebbb0-53c3-4540-b487-29f26faf0daa"],
+Cell[16387, 373, 644, 11, 58, "Text",ExpressionUUID->"39180c0e-d6c5-4301-bdd1-7e2021477d50"],
+Cell[17034, 386, 639, 15, 30, "Input",ExpressionUUID->"bc1ff76e-5654-4c24-a83b-d9152e0c5b87"],
+Cell[17676, 403, 744, 13, 35, "Text",ExpressionUUID->"bf876eb3-653a-4d90-9c5c-337614ba6948"],
+Cell[18423, 418, 281, 5, 30, "Input",ExpressionUUID->"71375336-c596-4dff-9da8-2a2fad189e57"],
+Cell[18707, 425, 285, 7, 35, "Text",ExpressionUUID->"d2f74f3b-5cf6-4693-8048-698e3f766fb7"],
+Cell[18995, 434, 437, 12, 73, "Input",ExpressionUUID->"5df7de78-98a0-4e31-b9f0-f9410c06440b"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19469, 451, 236, 7, 105, "Section",ExpressionUUID->"ed5669c0-3adf-4626-ad27-924dca712e38"],
+Cell[19708, 460, 955, 16, 127, "Text",ExpressionUUID->"0c8772cd-3688-4822-a4c3-92356f118f77"],
+Cell[20666, 478, 607, 14, 30, "Input",ExpressionUUID->"0f75d7a1-ba22-41c6-a7a1-46dd60112c48"],
+Cell[21276, 494, 1336, 22, 196, "Text",ExpressionUUID->"30d88095-dbe1-4f71-8330-df26ceff3ee0"],
+Cell[22615, 518, 447, 11, 30, "Input",ExpressionUUID->"03ef6b05-377e-4bf4-b0f0-f0d2f1b3c9ba"],
+Cell[23065, 531, 713, 12, 81, "Text",ExpressionUUID->"8baa547f-ec7d-4713-9385-ca3c83d87e71"],
+Cell[23781, 545, 394, 11, 30, "Input",ExpressionUUID->"403f0c39-e588-438e-81a9-615dc03122c8"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[24212, 561, 242, 4, 67, "Section",ExpressionUUID->"e521ee2b-1cd7-46f6-b9a7-61f074b21d1e"],
+Cell[24457, 567, 272, 6, 35, "Text",ExpressionUUID->"73d03a32-146a-4701-aa86-a8454158d12c"],
+Cell[24732, 575, 925, 25, 52, "Input",ExpressionUUID->"e285ebf3-7f6f-485f-a6c4-f056ec6cc43e"],
+Cell[25660, 602, 931, 17, 104, "Text",ExpressionUUID->"6b99b93c-2f09-4f5c-a544-a4d65ade7c92"],
+Cell[CellGroupData[{
+Cell[26616, 623, 424, 8, 71, "Subsubsection",ExpressionUUID->"8be705bf-6797-4101-aba9-0c3e15abddff"],
+Cell[27043, 633, 282, 7, 35, "Text",ExpressionUUID->"e9d832dd-fffc-4af6-9bbb-302a65f396b0"],
+Cell[27328, 642, 721, 21, 30, "Input",ExpressionUUID->"e6e84d42-8b09-4b41-9fe4-f40e4fd6564d"],
+Cell[28052, 665, 342, 7, 35, "Text",ExpressionUUID->"55f41ffa-5404-4719-bd2d-0c1e6a4d993e"],
+Cell[28397, 674, 979, 30, 52, "Input",ExpressionUUID->"aa39d552-3093-4d21-913f-1ff2af8d6aaf"],
+Cell[29379, 706, 919, 16, 150, "Text",ExpressionUUID->"44f4a308-330a-4283-a02e-82da178801b7"],
+Cell[30301, 724, 1013, 29, 52, "Input",ExpressionUUID->"e8bc5d2a-525a-4bf3-a937-aaaa035b2075"],
+Cell[31317, 755, 1272, 22, 150, "Text",ExpressionUUID->"ee28a248-6ebb-49d2-b999-24575a73b0ee"],
+Cell[32592, 779, 680, 22, 30, "Input",ExpressionUUID->"1aa7be4f-60c0-4ac8-8685-59f9b2de698e"],
+Cell[33275, 803, 1120, 19, 150, "Text",ExpressionUUID->"e7b4a379-1f03-4bc5-86dd-7ed93b2dad7c"],
+Cell[34398, 824, 829, 24, 52, "Input",ExpressionUUID->"94554ae5-eed9-4385-af1b-30cfaac0b2df"],
+Cell[35230, 850, 681, 12, 142, "Text",ExpressionUUID->"9ffe8450-af8d-49d0-8258-a10a6c0c444e"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[35960, 868, 248, 4, 67, "Section",ExpressionUUID->"4d424de6-6b81-408b-90aa-59fe89f91cdc"],
+Cell[36211, 874, 1064, 19, 150, "Text",ExpressionUUID->"17d62a18-50cb-401d-b26f-64b2a1ca6f3d"],
+Cell[37278, 895, 258, 6, 30, "Input",ExpressionUUID->"b3b0a171-ec6d-4618-a464-437d8e0bd731"],
+Cell[37539, 903, 995, 25, 112, "Text",ExpressionUUID->"452befc0-4da3-4731-a75a-f43ecd65530d"]
+}, Open  ]]
+}
+]
+*)
+
