@@ -1,0 +1,30 @@
+---
+title: "labbtest"
+author: "Ville Wassberg"
+date: "2022-10-28"
+output: html_document
+---
+``` {r}
+set.seed(19880210) # fyll i ditt egna födelsedatum. Om ni jobbar i par, välj den enas.
+likf <- runif(300)
+```
+
+``` {r}
+hist(likf,
+main = "Likformigt fördelade slumptal",
+ylab = "Antal",
+xlab = "Värde")
+```
+```{r}
+set.seed(19930610) 
+n <- 30 # antalet rader
+M <- 1000 # antalet kolumner
+likf_matris <- matrix(runif(n * M), nrow = n, ncol = M)
+```
+```{r}
+hist(likf_matris[3, ],
+main = "Likformigt fördelade slumptal",
+ylab = "Antal",
+xlab = "Värde")
+```
+

@@ -1,0 +1,29 @@
+---
+title: "Labb0"
+author: "Villson"
+date: "31/08/2021"
+output: html_document
+---
+
+Uppgift 1
+
+x <- pi+1
+x
+Värdet av pi+1 ar ca 4.142
+
+Uppgift 2
+
+CylinderArea <- function(r, h) {2*pi*r*(r+h)}
+% Radie = r, höjd = h
+
+A1 <- CylinderArea(3, 7)
+
+A2 <- CylinderArea(29, 8)
+
+x <- seq(0.1, 4, 0.01)
+h <- 1
+plot(x, CylinderArea(x,h), "l")
+
+
+
+
