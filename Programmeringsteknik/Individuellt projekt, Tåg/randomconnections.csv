@@ -1,0 +1,9 @@
+a,b,green,S
+c,b,green,N
+c,x,white,S
+x,y,white,N
+y,z,white,N
+y,f,blue,S
+f,g,blue,S
+g,h,blue,S
+h,a,blue,S

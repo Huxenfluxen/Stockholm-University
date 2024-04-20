@@ -1,0 +1,26 @@
+Östermalmstorg,T-centralen,red,S
+T-centralen,Östermalmstorg,red,N
+T-centralen,Gamla stan,red,S
+T-centralen,Gamla stan,green,S
+T-centralen,Hötorget,green,N
+T-centralen,Kungsträdgården,blue,S
+T-centralen,Rådhuset,blue,N
+Gamla stan,T-centralen,green,S
+Gamla stan,T-centralen,red,S
+Gamla stan,Slussen,red,S
+Gamla stan,Slussen,green,S
+Hötorget,T-centralen,green,S
+Slussen,Gamla stan,red,N
+Slussen,Gamla stan,green,N
+Slussen,Mariatorget,red,S
+Slussen,Medborgarplatsen,green,S
+Mariatorget,Slussen,red,N
+Mariatorget,Zinkensdamm,red,S
+Zinkensdamm,Mariatorget,red,N
+Medborgarplatsen,Slussen,green,N
+Medborgarplatsen,Skanstull,green,S
+Skanstull,Medborgarplatsen,green,N
+Kungsträdgården,T-centralen,blue,N
+Rådhuset,T-centralen,blue,S
+Rådhuset,Fridhemsplan,blue,N
+Fridhemsplan,Rådhuset,blue,S
